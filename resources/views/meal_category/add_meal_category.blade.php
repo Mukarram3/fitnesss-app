@@ -94,6 +94,12 @@ The above copyright notice and this permission notice shall be included in all c
                           <input type="text" id="" required name="title" class="form-control">
                         </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Type</label>
+                          <input type="text" id="" name="type" class="form-control">
+                        </div>
+                      </div>
                       <div class="col-md-4">
                         <div class="">
                           <label for="">Image</label>

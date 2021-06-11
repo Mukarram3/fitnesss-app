@@ -13,7 +13,7 @@ class CreateWeeksTable extends Migration
      */
     public function up()
     {
-        Schema::create('weeks', function (Blueprint $table) {
+        Schema::create('weekworkoutcats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('workoutid');
             $table->integer('daynumber');

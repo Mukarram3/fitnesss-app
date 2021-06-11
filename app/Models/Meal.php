@@ -11,7 +11,7 @@ class Meal extends Model
     protected $table='meals';
 
     // protected $primaryKey = 'title';
-    protected $fillable = ['id','meal_catid ','title','image','duration','description','status'];
+    protected $fillable = ['id','meal_catid ','title','image','mealtime','','duration','description','status'];
     public function hasMealcategory(){
 
         return $this->belongsTo(Mealcategory::class,'meal_catid');

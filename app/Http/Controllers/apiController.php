@@ -12,6 +12,10 @@ use App\Models\Subscription_plan;
 use App\Models\Mealcat_meal;
 use App\Http\Controllers\Controller; 
 use App\Models\Mealcategory;
+use App\Models\mealcatplan;
+use App\Models\weekdaysmealcat;
+use App\Models\day;
+use App\Models\weekmealcat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -136,9 +140,32 @@ class apiController extends Controller
 
 
     function mealcategoryindex(){
-        $data=Mealcategory::where('status',1)->get();
-        return $data;
+        $mealcategory=Mealcategory::where('status',1)->get();
+     
+        return $mealcategory;
     }
+    function mealcategorypaidindex(){
+        $mealcategory=Mealcategory::where('status',1)->where('type','paid')->get();
+       
+        return $mealcategory;
+    }
+    function mealcategoryplanindex(Request $req){
+        $mealcategory=Mealcategory::where('id',$req->id)->where('status',1)->where('type','paid')->get();
+       $plan=mealcatplan::where('mealcat_id',$req->id)->where('status',1)->get();
+        return ['mealcat' => $mealcategory, 'plan' => $plan];
+    }
+
+
+    function weekdaysmealcat(Request $req){
+        $mealcatid=$req->mealcatid;
+        $planid=$req->planid;
+        $weeks=weekmealcat::where('mealcatid',$mealcatid)->where('planid',$planid)->get();
+
+        $days=day::all();
+        return ['weeks' => $weeks, 'day' => $days];
+    }
+
+
     
     public function mealindex(Request $request){
         

@@ -39,7 +39,18 @@ Route::get('workout_category/index',[apiController::class,'workoutcategory_index
 Route::post('workout_category/exercises',[apiController::class,'exercises'])->name('exercises');
 
 
-//                           Meal
+
+//                         Meal Category Routes
 
 Route::get('meal_category/index',[apiController::class,'mealcategoryindex'])->name('mealcategoryindex');
+Route::get('meal_categorypaid/index',[apiController::class,'mealcategorypaidindex'])->name('mealcategorypaidindex');
+Route::post('mealcategoryplan/index',[apiController::class,'mealcategoryplanindex'])->name('mealcategoryplanindex');
+Route::post('weekdaysmealcat/index',[apiController::class,'weekdaysmealcat'])->name('weekdaysmealcat');
+
+
+
+//                           Meal
+
+
+
 Route::post('meal/index',[apiController::class,'mealindex'])->name('mealindex');

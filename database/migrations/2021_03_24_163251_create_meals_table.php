@@ -18,6 +18,7 @@ class CreateMealsTable extends Migration
             $table->unsignedBigInteger('meal_catid');
             $table->string('title');
             $table->text('image');
+            $table->string('mealtime');
             $table->text('ingredients')->nullable();
             $table->text('steps')->nullable();
             $table->integer('duration');
