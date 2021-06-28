@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\weekmealcat;
+use App\Models\Mealcategory;
+use App\Models\mealcatplan;
 use Illuminate\Http\Request;
 
 class WeekmealcatController extends Controller
@@ -14,7 +16,11 @@ class WeekmealcatController extends Controller
      */
     public function index()
     {
-        //
+        $data=weekmealcat::all();
+        // return $data;
+        // $category=Mealcategory::all();
+        // return $category->hasmealweekcategories->title[0];
+        return view('meal_category_weeks/index',compact('data'));
     }
 
     /**

@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
+
+      
   
     });
 
@@ -42,7 +44,7 @@ Route::post('workout_category/exercises',[apiController::class,'exercises'])->na
 
 //                         Meal Category Routes
 
-Route::get('meal_category/index',[apiController::class,'mealcategoryindex'])->name('mealcategoryindex');
+Route::get('meal_category/index',[apiController::class,'mealcategoryindex'])->name('mealcategoryindex'); 
 Route::get('meal_categorypaid/index',[apiController::class,'mealcategorypaidindex'])->name('mealcategorypaidindex');
 Route::post('mealcategoryplan/index',[apiController::class,'mealcategoryplanindex'])->name('mealcategoryplanindex');
 Route::post('weekdaysmealcat/index',[apiController::class,'weekdaysmealcat'])->name('weekdaysmealcat');

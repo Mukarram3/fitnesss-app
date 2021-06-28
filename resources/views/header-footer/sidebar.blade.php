@@ -20,26 +20,7 @@
        </a>
      </li>   
      
-     <li class="nav-item ">
-       <a class="nav-link" href="{{route('subscribed')}}">
-         <i class="material-icons">person</i>
-         <p>Subscribed</p>
-       </a>
-     </li>
-     
-     <li class="nav-item ">
-       <a class="nav-link" href="{{route('subscribe_history')}}">
-         <i class="material-icons">person</i>
-         <p>Subscription History</p>
-       </a>
-     </li>
-     
-     <li class="nav-item ">
-       <a class="nav-link" href="{{route('plans')}}">
-         <i class="material-icons">notifications</i>
-         <p>Subscription Plans</p>
-       </a>
-     </li>
+    
      <li class="nav-item ">
        <a class="nav-link" href="{{route('catgory_index')}}">
          <i class="material-icons">content_paste</i>
@@ -47,6 +28,39 @@
        </a>
      </li>
    
+     <li class="nav-item ">
+      <a class="nav-link" href="{{route('mealcategoryindex')}}">
+        <i class="material-icons">location_ons</i>
+        <p>Meal Category</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('mealcategoryplanindex')}}">
+        <i class="material-icons">notifications</i>
+        <p>Meal Category Plans</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('mealcategoryweeks')}}">
+        <i class="material-icons">notifications</i>
+        <p>Meal Category Weeks</p>
+      </a>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('mealcategorydays')}}">
+        <i class="material-icons">notifications</i>
+        <p>Meal Category Days</p>
+      </a>
+    </li>
+    
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('mealindex')}}">
+        <i class="material-icons">notifications</i>
+        <p>Meals</p>
+      </a>
+    </li>
+
       <li class="nav-item ">
        <a class="nav-link" href="{{route('workoutcategory_index')}}">
          <i class="material-icons">library_books</i>
@@ -60,18 +74,28 @@
          <p>Exercises</p>
        </a>
      </li> 
+    
+
      <li class="nav-item ">
-       <a class="nav-link" href="{{route('mealcategoryindex')}}">
-         <i class="material-icons">location_ons</i>
-         <p>Meal Category</p>
-       </a>
-     </li>
-     <li class="nav-item ">
-       <a class="nav-link" href="{{route('mealindex')}}">
-         <i class="material-icons">notifications</i>
-         <p>Meals</p>
-       </a>
-     </li>
+      <a class="nav-link" href="{{route('subscribed')}}">
+        <i class="material-icons">person</i>
+        <p>Subscribed</p>
+      </a>
+    </li>
+    
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('subscribe_history')}}">
+        <i class="material-icons">person</i>
+        <p>Subscription History</p>
+      </a>
+    </li>
+    
+    <li class="nav-item ">
+      <a class="nav-link" href="{{route('plans')}}">
+        <i class="material-icons">notifications</i>
+        <p>Subscription Plans</p>
+      </a>
+    </li>
      
      {{--
      <li class="nav-item ">

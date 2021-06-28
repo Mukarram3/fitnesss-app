@@ -14,7 +14,8 @@ class DayController extends Controller
      */
     public function index()
     {
-        //
+        $data=day::all();
+        return view('meal_category_days/index',compact('data'));
     }
 
     /**

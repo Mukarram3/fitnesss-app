@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\mealcatplan;
+use App\Models\Mealcategory;
 use Illuminate\Http\Request;
 
 class MealcatplanController extends Controller
@@ -14,7 +15,8 @@ class MealcatplanController extends Controller
      */
     public function index()
     {
-        //
+        $data=mealcatplan::all();
+        return view('meal-category-plans/index',compact('data'));
     }
 
     /**
@@ -24,7 +26,8 @@ class MealcatplanController extends Controller
      */
     public function create()
     {
-        //
+        $category=Mealcategory::all();
+        return view('meal-category-plans/store',compact('category'));
     }
 
     /**
@@ -33,9 +36,34 @@ class MealcatplanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+
+        $req->validate([
+            'mealcat_id' => 'required',
+            'price' =>'required',
+            'duration' =>'required',
+            'descr' =>'required',
+            'status' =>'required'
+        ]);
+
+        $admin= new mealcatplan();
+        
+                    $admin->mealcat_id=$req->mealcat_id;
+                    $admin->price=$req->price;
+                    $admin->duration=$req->duration;
+                    $admin->description=$req->descr;
+                    $admin->status=$req->status;
+                    $save=$admin->save();
+               
+        if($save){
+            
+            return redirect()->route('mealcategoryplanindex');
+        }
+        else{
+            return back()->with('fail','Smoething went wrong, try again...');
+        
+        }
     }
 
     /**
@@ -55,9 +83,11 @@ class MealcatplanController extends Controller
      * @param  \App\Models\mealcatplan  $mealcatplan
      * @return \Illuminate\Http\Response
      */
-    public function edit(mealcatplan $mealcatplan)
+    public function edit(Request $request)
     {
-        //
+        $data=mealcatplan::find($request->id);
+        $category=Mealcategory::all();
+        return view('meal-category-plans/edit', compact('category'), ['data' => $data]);
     }
 
     /**
@@ -67,9 +97,28 @@ class MealcatplanController extends Controller
      * @param  \App\Models\mealcatplan  $mealcatplan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mealcatplan $mealcatplan)
+    public function update(Request $req)
     {
-        //
+        $admin=mealcatplan::find($req->id);
+   
+// return $admin;
+
+            $admin->mealcat_id=$req->mealcat_id;
+            $admin->price=$req->price;
+            $admin->duration=$req->duration;
+            $admin->description=$req->descr;
+            $admin->status=$req->status;
+            $save=$admin->save();
+       
+if($save){
+    
+    return redirect()->route('mealcategoryplanindex');
+}
+else{
+    return back()->with('fail','Smoething went wrong, try again...');
+
+}
+
     }
 
     /**

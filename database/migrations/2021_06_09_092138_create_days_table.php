@@ -17,7 +17,7 @@ class CreateDaysTable extends Migration
             $table->id();
             $table->unsignedBigInteger('weekmealcatid');
             $table->integer('daynumber');
-            $table->boolean('status');
+            $table->boolean('status')->default('1');
             $table->foreign('weekmealcatid')->references('id')->on('weekmealcats')->onDelete('cascade');
             $table->timestamps();
         });

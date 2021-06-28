@@ -88,6 +88,8 @@ class apiController extends Controller
 
     public function login(Request $req){
 
+      
+
         $req->validate([
         
             'email'=>'required|email',
@@ -96,10 +98,12 @@ class apiController extends Controller
         
         ]);
         
-       
+      
         $credentail=$req->only('email','password');
         
         if(Auth::attempt($credentail)){
+
+            
             // $data = ['loggeduserinfo'=>User::where('id','=', auth()->user()->id)->first()];
 
             if(auth()->user()->status==1){
@@ -107,6 +111,8 @@ class apiController extends Controller
                 $user = Auth::user(); 
                 
                 $success=[];
+
+               
             
             $success['name'] =auth()->user()->name;
             $success['email'] =auth()->user()->email;
@@ -120,9 +126,10 @@ class apiController extends Controller
             $success['weight'] =auth()->user()->weight;
             // $success['password']= Crypt::decrypt(auth()->user()->password); 
             $success['gender'] =auth()->user()->gender;
-            $success['token'] =  $user->createToken('MyApp')->accessToken;
+            // $success['token'] =  $user->createToken('MyApp')->accessToken;
             // $success['image'] =auth()->user()->image;
             return response()->json(['success' => $success], 200);
+          
 
             // return response()->json(['success'=>'Logged in']); 
             }

@@ -25,5 +25,17 @@ class Mealcategory extends Model
         return $this->hasMany(subscribed::class,'id');
 
     }
+
+    public function hasweekmealcategories(){
+
+        return $this->hasMany(weekmealcat::class,'id');
+
+    }
+
+    public function hasmealcategoryplans(){
+
+        return $this->hasMany(mealcatplan::class,'id');
+
+    }
     
 }

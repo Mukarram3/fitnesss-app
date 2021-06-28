@@ -10,4 +10,11 @@ class day extends Model
     use HasFactory;
     protected $table='days';
     protected $fillable = ['id','weekmealcatid ','daynumber','status'];
+
+    public function hasmealcategoryweeks(){
+
+        return $this->belongsTo(weekmealcat::class,'weekmealcatid');
+
+    }
+
 }

@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DayController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\WeekmealcatController;
 use App\Http\Controllers\MealCategoryController;
+use App\Http\Controllers\MealcatplanController;
 use App\Http\Controllers\subscr_plansController;
 use App\Http\Controllers\SubscribedController;
 use App\Http\Controllers\SubscriptionPlanController;
@@ -191,8 +194,41 @@ Route::group(['middleware'=>'auth'],function(){
 //                         Meal category Routes End
 
 
-//                         Meals Routes Start
+//                      Weeks Meal Category
 
+
+Route::group(['middleware'=>'auth'],function(){
+
+    Route::get('meal_category_weeks/index',[WeekmealcatController::class,'index'])->name('mealcategoryweeks');
+
+});
+
+
+//                       Days Meal Category Routes
+
+
+Route::group(['middleware'=>'auth'],function(){
+
+    Route::get('meal_category_days/index',[DayController::class,'index'])->name('mealcategorydays');
+
+});
+
+
+
+//                          Meal category plans routes
+
+Route::group(['middleware'=>'auth'],function(){
+
+Route::get('meal_category_plan/index',[MealcatplanController::class,'index'])->name('mealcategoryplanindex');
+Route::get('meal_category_plan/create',[MealcatplanController::class,'create'])->name('add_meal_category_plans');
+Route::post('meal_category_plan/store',[MealcatplanController::class,'store'])->name('add_mealcatplans_data');
+Route::get('meal_category_plan/edit_plan/{id}',[MealcatplanController::class,'edit'])->name('edit_plan');
+Route::post('meal_category_plan/index',[MealcatplanController::class,'update'])->name('update_plan_data');
+
+
+});
+
+//                         Meals Routes Start
 
 
 Route::group(['middleware'=>'auth'],function(){
