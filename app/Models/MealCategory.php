@@ -37,5 +37,5 @@ class Mealcategory extends Model
         return $this->hasMany(mealcatplan::class,'id');
 
     }
-    
+
 }

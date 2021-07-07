@@ -72,7 +72,6 @@ The above copyright notice and this permission notice shall be included in all c
                         @foreach ($data as $dat2)
                             
                        
-
                         <tr>
                           <td>{{$dat2->id}}</td>
                           <td>{{$dat2->hasmealcategories->title}}</td>

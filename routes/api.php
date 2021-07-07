@@ -33,6 +33,7 @@ Route::post('user/signup',[apiController::class,'signup'])->name('signup');
 Route::post('user/login',[apiController::class,'login'])->name('login');
 Route::post('forget_password/email',[ForgotPasswordController::class,'forgot']);
 Route::post('forget_password/reset',[ForgotPasswordController::class,'reset']);
+
 //                         Workout
 
 
