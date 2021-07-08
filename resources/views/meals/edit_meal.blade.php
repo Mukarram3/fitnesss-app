@@ -45,27 +45,27 @@ The above copyright notice and this permission notice shall be included in all c
 
 
   <div class="wrapper ">
-    
+
 
     @include('../header-footer/sidebar')
 
 
     <div class="main-panel">
       <!-- Navbar -->
-      
+
       @include('../header-footer/navbar')
 
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          
-          
+
+
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Edit Meal</h4>
-                 
+
                 </div>
                 <div class="card-body">
                   <form action="{{route('update_meal_data')}}" method="POST" enctype="multipart/form-data">
@@ -77,15 +77,15 @@ The above copyright notice and this permission notice shall be included in all c
                               <label>Meal Category Title</label>
                               <!-- <input type="number" id="product_type" name="cat_id" required="[1-6]" class="form-control"> -->
                               <select multiple="multiple" style="    height: auto;"  name="cat_id[]" class="form-control">
-                           
+
                                 @foreach ($category as $data2)
-                              
+
                               <option value="{{$data2->id}}">{{$data2->title}}</option>
-                             
+
                               @endforeach
-      
+
       </select>
-                              
+
                             </div>
                           </div>
                       <div class="col-md-12">
@@ -93,7 +93,7 @@ The above copyright notice and this permission notice shall be included in all c
                           <label>Meal Title</label>
                           <input type="text" id=""  value="{{$data->title }}" required name="title" class="form-control">
                         </div>
-                      </div>                   
+                      </div>
                       <div class="col-md-4">
                         <div class="">
                           <label for="">Image</label>
@@ -104,52 +104,52 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-9">
                         <div class="">
                           <label for="">Edit Meal Steps</label>
-                          
-                          
+
+
                             @php
                                 $steps=json_decode($data->steps)
                             @endphp
                             @foreach ($steps as $step)
-                                
+
                             <div id="another-participant1">
 
                               <input type="text" value="{{$step}}" style="margin-top: 15px;;display: block; width:70%" name="step[]" class="form-control" id="">
 
                             </div>
-                            
+
                             @endforeach
-                         
+
                          <button class="btn-primary btn btn-md" style="    margin-top: 20px;
                          border: navajowhite;
                          border-radius: 6px;" type="button" id="add-participant1">+ Add more</button>
                         </div>
                       </div>
 
-                      
+
                       <div class="col-md-9">
                         <div class="">
                           <label for="">Edit Meal Ingredients</label>
-                          
-                          
+
+
                             @php
                                 $ingredients=json_decode($data->ingredients)
                             @endphp
                             @foreach ($ingredients as $ingredient)
-                                
+
                             <div id="another-participant2">
 
                               <input type="text" value="{{$ingredient}}" style="margin-top: 15px;;display: block; width:70%" name="ingredient[]" class="form-control" id="">
 
                             </div>
-                            
+
                             @endforeach
-                           
+
                          <button class="btn-primary btn btn-md" style="    margin-top: 20px;
                          border: navajowhite;
                          border-radius: 6px;" type="button" id="add-participant2">+ Add more</button>
                         </div>
                       </div>
-                     
+
 
                       <div class="col-md-9">
                         <div class="form-group">
@@ -157,7 +157,66 @@ The above copyright notice and this permission notice shall be included in all c
                           <input type="number" value="{{$data->duration }}" id=""  name="time" class="form-control">
                         </div>
                       </div>
-                      
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Meal Time</label>
+                          <input type="text" id="" value="{{$data->mealtime }}"  name="mealtime" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Calories (kcal)</label>
+                          <input type="number" id="" value="{{$data->calories }}"  name="calories" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Calories Percentage</label>
+                          <input type="number" value="{{$data->caloriesperc }}" id=""  name="caloriesperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Carbo (g)</label>
+                          <input type="number" value="{{$data->carbo }}" id=""  name="carbo" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Carbo Percentage</label>
+                          <input type="number" value="{{$data->carboperc }}" id=""  name="carboperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Proteins (g)</label>
+                          <input type="number" value="{{$data->proteins }}" id=""  name="proteins" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Proteins  Percentage</label>
+                          <input type="number" value="{{$data->proteinsperc }}" id=""  name="proteinsperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Fats (g)</label>
+                          <input type="number" value="{{$data->fats }}" id=""  name="fats" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Fats Percentage</label>
+                          <input type="number" value="{{$data->fatsperc }}" id=""  name="fatsperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Complexity</label>
+                          <input type="text" value="{{$data->complexity }}" id=""  name="complexity" class="form-control">
+                        </div>
+                      </div>
                       <div class="col-md-9">
                         <div class="form-group">
                           <label>Description</label>
@@ -180,7 +239,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -189,11 +248,11 @@ The above copyright notice and this permission notice shall be included in all c
       <script>
 
         $(document).ready(function(){
-        
+
             $("#add-participant1").click(function(){
 
         var $div = $('div[id^="another-participant1"]:last');
-   
+
         var num = parseInt( $div.prop("id").match(/\d+/g), 10 ) +1;
 
         var $klon = $div.clone().prop('id', 'another-participant1'+num );
@@ -204,9 +263,9 @@ The above copyright notice and this permission notice shall be included in all c
           name_number++;
           this.name = this.name.replace(/\[[0-9]\]+/, '['+name_number+']')
         });
-     
+
         $div.after( $klon );
-        
+
         });
         $("#add-participant2").click(function(){
 
@@ -226,9 +285,9 @@ $klon.find('input').each(function() {
 $div.after( $klon );
 
 });
-        
+
         });
-        
+
               </script>
 
   {{-- <!--   Core JS Files   -->

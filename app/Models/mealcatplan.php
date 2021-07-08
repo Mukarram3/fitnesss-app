@@ -11,9 +11,9 @@ class mealcatplan extends Model
     protected $table='mealcatplans';
     protected $fillable = ['id','mealcat_id','price','duration','description','status'];
 
-    public function hasweekmealcategories(){
+    public function hasmealcatweek(){
 
-        return $this->hasMany(weekmealcat::class,'id');
+        return $this->hasMany(mealcatweek::class,'id');
 
     }
 

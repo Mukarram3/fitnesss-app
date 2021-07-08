@@ -23,6 +23,12 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('Mobile');
             $table->text('image')->nullable();
+            $table->string('country');
+            $table->string('state');
+            $table->date('dob');
+            $table->float('height');
+            $table->float('weight');
+            $table->string('gender');
             $table->string('type')->default('user');
             $table->boolean('status')->default('1');
             $table->rememberToken();

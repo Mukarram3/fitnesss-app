@@ -3,19 +3,19 @@ namespace App\Http\Controllers\API;
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
-use App\Models\Meal;
+use App\Models\mealtable;
 use App\Models\Exercise;
 use App\Models\Workout;
 use App\Models\Subscribed;
 use App\Models\Subscription_history;
 use App\Models\Subscription_plan;
 use App\Models\Mealcat_meal;
-use App\Http\Controllers\Controller; 
+use App\Http\Controllers\Controller;
 use App\Models\Mealcategory;
 use App\Models\mealcatplan;
 use App\Models\weekdaysmealcat;
-use App\Models\day;
-use App\Models\weekmealcat;
+use App\Models\mealday;
+use App\Models\mealcatweek;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Crypt;
 class apiController extends Controller
 {
 
-   
+
 
     function signup(Request $request){
         // return $request;
@@ -34,13 +34,13 @@ class apiController extends Controller
             'name'=>'required',
             'email'=>'required|email',
             'password'=>'required|min:5|max:15',
-           
-    
+
+
         ]);
 
 
-        
-        
+
+
     $admin=new User();
     $admin->name=request('name');
     $admin->email=request('email');
@@ -56,7 +56,7 @@ class apiController extends Controller
     $admin->height=$request->height;
     $admin->gender=$request->gender;
 
-    
+
 
     if($request->hasFile('file')){
         $image=$request->file('file');
@@ -71,49 +71,49 @@ class apiController extends Controller
 
 
 
-        $success['token'] =  $admin->createToken('MyApp')-> accessToken; 
+        $success['token'] =  $admin->createToken('MyApp')-> accessToken;
         // return "dfsdfc";
         return response()->json($success, 200);
-// return response()->json(['success'=>'Record Has Saved']); 
-    
+// return response()->json(['success'=>'Record Has Saved']);
+
     }
     else{
         return response()->json(['fail' => 'Unable to signup'],201);
 
     }
 
-    
+
 
     }
 
     public function login(Request $req){
 
-      
+
 
         $req->validate([
-        
+
             'email'=>'required|email',
             'password'=>'required|min:5|max:20'
-            
-        
+
+
         ]);
-        
-      
+
+
         $credentail=$req->only('email','password');
-        
+
         if(Auth::attempt($credentail)){
 
-            
+
             // $data = ['loggeduserinfo'=>User::where('id','=', auth()->user()->id)->first()];
 
             if(auth()->user()->status==1){
 
-                $user = Auth::user(); 
-                
+                $user = Auth::user();
+
                 $success=[];
 
-               
-            
+
+
             $success['name'] =auth()->user()->name;
             $success['email'] =auth()->user()->email;
             $success['address'] =auth()->user()->address;
@@ -124,38 +124,57 @@ class apiController extends Controller
             $success['dob'] =auth()->user()->dob;
             $success['height'] =auth()->user()->height;
             $success['weight'] =auth()->user()->weight;
-            // $success['password']= Crypt::decrypt(auth()->user()->password); 
+            // $success['password']= Crypt::decrypt(auth()->user()->password);
             $success['gender'] =auth()->user()->gender;
             // $success['token'] =  $user->createToken('MyApp')->accessToken;
             // $success['image'] =auth()->user()->image;
             return response()->json(['success' => $success], 200);
-          
 
-            // return response()->json(['success'=>'Logged in']); 
+
+            // return response()->json(['success'=>'Logged in']);
             }
             else{
                 return response()->json(['fail' => 'Unable to login'],201);
             }
-            
+
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401); 
+            return response()->json(['error'=>'Unauthorised'], 401);
         }
-        
+
             }
 
 
 
     function mealcategoryindex(){
         $mealcategory=Mealcategory::where('status',1)->get();
-     
+
         return $mealcategory;
     }
     function mealcategorypaidindex(){
         $mealcategory=Mealcategory::where('status',1)->where('type','paid')->get();
-       
+
         return $mealcategory;
     }
+
+
+    public function plans(Request $req){
+        $mealcatplans=mealcatplan::where('status',1)->where('mealcat_id',$req->mealcat_id)->get();
+        return $mealcatplans;
+    }
+
+    public function weeks(Request $req){
+
+        $mealcatweeks=mealcatweek::where('mealcatid',$req->mealcatid)->where('mealcatplanid',$req->mealcatplanid)->where('status',1)->get();
+        return $mealcatweeks;
+    }
+
+    public function days(Request $req){
+        $mealcatdays=mealday::where('mealcatid',$req->mealcatid)->where('mealcatplanid',$req->mealcatplanid)->where('mealcatweekid',$req->mealcatweekid)->where('status',1)->get();
+        return $mealcatdays;
+    }
+
+
     function mealcategoryplanindex(Request $req){
         $mealcategory=Mealcategory::where('id',$req->id)->where('status',1)->where('type','paid')->get();
        $plan=mealcatplan::where('mealcat_id',$req->id)->where('status',1)->get();
@@ -166,21 +185,20 @@ class apiController extends Controller
     function weekdaysmealcat(Request $req){
         $mealcatid=$req->mealcatid;
         $planid=$req->planid;
-        $weeks=weekmealcat::where('mealcatid',$mealcatid)->where('planid',$planid)->get();
+        $weeks=mealcatweek::where('mealcatid ',$mealcatid)->where('mealcatplanid',$planid)->get();
 
-        $days=day::all();
+        $days=mealday::all();
         return ['weeks' => $weeks, 'day' => $days];
     }
 
 
-    
+
     public function mealindex(Request $request){
-        
-       $id=$request['id'];
-        $data=Meal::where('status',1)->where('meal_catid','=',$id)->get();
+
+        $data=mealtable::where('status',1)->where('mealcatid',$request->mealcatid)->where('mealcatplanid',$request->mealcatplanid)->where('mealcatid',$request->mealcatweekid)->where('mealdayid',$request->mealdayid)->get();
         // return $data->steps;
         return $data;
-       
+
     }
 
 
@@ -189,18 +207,18 @@ class apiController extends Controller
         return $data;
     }
     // function exercises(){
-    //     $data=Exercise::with('hasWorkout')->where('status',1)->get();   
+    //     $data=Exercise::with('hasWorkout')->where('status',1)->get();
     //     return $data;
     // }
 
 
     public function exercises(Request $request){
-        
+
         $id=$request['id'];
          $data=Exercise::where('status',1)->where('workout_catid','=',$id)->get();
          // return $data->steps;
          return $data;
-        
+
      }
 
 

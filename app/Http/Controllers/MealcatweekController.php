@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\day;
+use App\Models\mealcatweek;
 use Illuminate\Http\Request;
 
-class DayController extends Controller
+class MealcatweekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,11 @@ class DayController extends Controller
      */
     public function index()
     {
-        $data=day::all();
-        return view('meal_category_days/index',compact('data'));
+        $data=mealcatweek::all();
+        // return $data;
+        // $category=Mealcategory::all();
+        // return $category->hasmealweekcategories->title[0];
+        return view('meal_category_weeks/index',compact('data'));
     }
 
     /**
@@ -42,10 +45,10 @@ class DayController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\day  $day
+     * @param  \App\Models\mealcatweek  $mealcatweek
      * @return \Illuminate\Http\Response
      */
-    public function show(day $day)
+    public function show(mealcatweek $mealcatweek)
     {
         //
     }
@@ -53,10 +56,10 @@ class DayController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\day  $day
+     * @param  \App\Models\mealcatweek  $mealcatweek
      * @return \Illuminate\Http\Response
      */
-    public function edit(day $day)
+    public function edit(mealcatweek $mealcatweek)
     {
         //
     }
@@ -65,10 +68,10 @@ class DayController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\day  $day
+     * @param  \App\Models\mealcatweek  $mealcatweek
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, day $day)
+    public function update(Request $request, mealcatweek $mealcatweek)
     {
         //
     }
@@ -76,10 +79,10 @@ class DayController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\day  $day
+     * @param  \App\Models\mealcatweek  $mealcatweek
      * @return \Illuminate\Http\Response
      */
-    public function destroy(day $day)
+    public function destroy(mealcatweek $mealcatweek)
     {
         //
     }

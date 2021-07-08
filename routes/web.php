@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DayController;
+use App\Http\Controllers\MealdayController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\ExerciseController;
-use App\Http\Controllers\MealController;
-use App\Http\Controllers\WeekmealcatController;
+use App\Http\Controllers\MealtableController;
+use App\Http\Controllers\MealcatweekController;
 use App\Http\Controllers\MealCategoryController;
 use App\Http\Controllers\MealcatplanController;
 use App\Http\Controllers\subscr_plansController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\SubscribedController;
 use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\SubscriptionHistoryController;
 use App\Http\Controllers\UserController;
+use App\Models\mealday;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ Route::post('user/logout',[UserController::class,'logout'])->name('logout');
 Route::group(['middleware'=>'auth'],function(){
 
 
-    
+
 Route::get('user/index',[UserController::class,'user'])->name('user_page');
 Route::get('user/add_user',[UserController::class,'add_user'])->name('add_user');
 Route::post('user/add_user_data',[UserController::class,'add_user_data'])->name('add_user_data');
@@ -73,14 +74,14 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('Subscription-Plans/index',[SubscriptionPlanController::class,'plans'])->name('plans');
     Route::get('Subscription-Plans/add_plan',[SubscriptionPlanController::class,'add_plan'])->name('add_plan');
-    
+
     Route::post('Subscription-Plans/index',[SubscriptionPlanController::class,'add_plan_data'])->name('add_plan_data');
-    
+
     Route::get('Subscription-Plans/editplan/{id}',[SubscriptionPlanController::class,'edit_plan'])->name('edit_plan');
-    
+
     Route::post('Subscription-Plan/index',[SubscriptionPlanController::class,'update_plan'])->name('update_plan');
 
-    
+
 });
 
 
@@ -96,9 +97,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('subscribed/index',[SubscribedController::class,'subscribed'])->name('subscribed');
     Route::get('subscribed/edit_subscribed/{id}',[SubscribedController::class,'edit_subscribed'])->name('edit_subscribed');
     Route::post('subscribed/index',[SubscribedController::class,'update_subscribed'])->name('update_subscribed');
-    
 
-    
+
+
 });
 
 
@@ -125,13 +126,13 @@ Route::get('category/index',[CategoryController::class,'index'])->name('catgory_
 
 Route::group(['middleware'=>'auth'],function(){
 
-    
+
     Route::get('category/add_category',[CategoryController::class,'add_category'])->name('add_category');
     Route::post('category/add_category_data',[CategoryController::class,'add_category_data'])->name('add_category_data');
     Route::get('category/edit_category/{id}',[CategoryController::class,'edit_category'])->name('edit_category');
     Route::post('category/index',[CategoryController::class,'update_category'])->name('update_category');
 
-    
+
 });
 
 
@@ -149,7 +150,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('workout_category/add_workoutcat_data',[WorkoutController::class,'add_workoutcat_data'])->name('add_workoutcat_data');
     Route::get('workout_category/edit_workoutcategory/{id}',[WorkoutController::class,'edit_workoutcategory'])->name('edit_workoutcategory');
     Route::post('workout_category/index',[WorkoutController::class,'update_workout_cat'])->name('update_workout_cat');
-    
+
 });
 
 //                          Workout Caregory Routes End
@@ -169,7 +170,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('workout_category/exercises',[ExerciseController::class,'update_exercise'])->name('update_exercise');
     Route::post('exercise/index',[ExerciseController::class,'update_exercise_status'])->name('update_exercise_status');
 
-    
+
 });
 
 
@@ -188,18 +189,18 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('meal_category/edit_mealcategory/{id}',[MealCategoryController::class,'edit_mealcategory'])->name('edit_mealcategory');
     Route::post('meal_category/index',[MealCategoryController::class,'update_meal_cat'])->name('update_meal_cat');
 
-    
+
 });
 
 //                         Meal category Routes End
 
 
-//                      Weeks Meal Category
+//                       Meal Category Weeks
 
 
 Route::group(['middleware'=>'auth'],function(){
 
-    Route::get('meal_category_weeks/index',[WeekmealcatController::class,'index'])->name('mealcategoryweeks');
+    Route::get('meal_category_weeks/index',[MealcatweekController::class,'index'])->name('mealcategoryweeks');
 
 });
 
@@ -209,7 +210,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 Route::group(['middleware'=>'auth'],function(){
 
-    Route::get('meal_category_days/index',[DayController::class,'index'])->name('mealcategorydays');
+    Route::get('meal_category_days/index',[MealdayController::class,'index'])->name('mealcategorydays');
 
 });
 
@@ -234,15 +235,15 @@ Route::post('meal_category_plan/index',[MealcatplanController::class,'update'])-
 Route::group(['middleware'=>'auth'],function(){
 
 
-    Route::get('meal/index',[MealController::class,'mealindex'])->name('mealindex');
-    Route::get('meal/add_meal',[MealController::class,'add_meal'])->name('add_meal');
-    Route::post('meals/add_meal_data',[MealController::class,'add_meal_data'])->name('add_meal_data');
-    Route::get('meal/edit_meal/{id}',[MealController::class,'edit_meal'])->name('edit_meal');
-    Route::post('meal/index',[MealController::class,'update_meal_data'])->name('update_meal_data');
-    Route::post('meals/index',[MealController::class,'update_meal_status'])->name('update_meal_status');
-    Route::get('meal/ingredients/{id}',[MealController::class,'ingredients'])->name('ingredients');
-    Route::get('meal/steps/{id}',[MealController::class,'steps'])->name('steps');
-    
+    Route::get('meal/index',[MealtableController::class,'mealindex'])->name('mealindex');
+    Route::get('meal/add_meal',[MealtableController::class,'add_meal'])->name('add_meal');
+    Route::post('meals/add_meal_data',[MealtableController::class,'add_meal_data'])->name('add_meal_data');
+    Route::get('meal/edit_meal/{id}',[MealtableController::class,'edit_meal'])->name('edit_meal');
+    Route::post('meal/index',[MealtableController::class,'update_meal_data'])->name('update_meal_data');
+    Route::post('meals/index',[MealtableController::class,'update_meal_status'])->name('update_meal_status');
+    Route::get('meal/ingredients/{id}',[MealtableController::class,'ingredients'])->name('ingredients');
+    Route::get('meal/steps/{id}',[MealtableController::class,'steps'])->name('steps');
+
 });
 
 

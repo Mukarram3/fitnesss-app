@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\weekmealcat;
-use App\Models\Mealcategory;
-use App\Models\mealcatplan;
+use App\Models\mealday;
 use Illuminate\Http\Request;
 
-class WeekmealcatController extends Controller
+class MealdayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,8 @@ class WeekmealcatController extends Controller
      */
     public function index()
     {
-        $data=weekmealcat::all();
-        // return $data;
-        // $category=Mealcategory::all();
-        // return $category->hasmealweekcategories->title[0];
-        return view('meal_category_weeks/index',compact('data'));
+        $data=mealday::all();
+        return view('meal_category_days/index',compact('data'));
     }
 
     /**
@@ -47,10 +42,10 @@ class WeekmealcatController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\weekmealcat  $weekmealcat
+     * @param  \App\Models\mealday  $mealday
      * @return \Illuminate\Http\Response
      */
-    public function show(weekmealcat $weekmealcat)
+    public function show(mealday $mealday)
     {
         //
     }
@@ -58,10 +53,10 @@ class WeekmealcatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\weekmealcat  $weekmealcat
+     * @param  \App\Models\mealday  $mealday
      * @return \Illuminate\Http\Response
      */
-    public function edit(weekmealcat $weekmealcat)
+    public function edit(mealday $mealday)
     {
         //
     }
@@ -70,10 +65,10 @@ class WeekmealcatController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\weekmealcat  $weekmealcat
+     * @param  \App\Models\mealday  $mealday
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, weekmealcat $weekmealcat)
+    public function update(Request $request, mealday $mealday)
     {
         //
     }
@@ -81,10 +76,10 @@ class WeekmealcatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\weekmealcat  $weekmealcat
+     * @param  \App\Models\mealday  $mealday
      * @return \Illuminate\Http\Response
      */
-    public function destroy(weekmealcat $weekmealcat)
+    public function destroy(mealday $mealday)
     {
         //
     }

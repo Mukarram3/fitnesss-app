@@ -9,10 +9,10 @@ class Mealcategory extends Model
 {
     use HasFactory;
     protected $table='mealcategories';
-    protected $fillable = ['id','cat_id','title','image','description','status'];
-    public function hasMeal(){
+    protected $fillable = ['id','cat_id','title','image','description','status','paid'];
+    public function hasMealtable(){
 
-        return $this->hasMany(Meal::class,'id');
+        return $this->hasMany(mealtable::class,'id');
 
     }
     public function hasSubscription_plan(){
@@ -26,13 +26,13 @@ class Mealcategory extends Model
 
     }
 
-    public function hasweekmealcategories(){
+    public function hasmealcatweeks(){
 
-        return $this->hasMany(weekmealcat::class,'id');
+        return $this->hasMany(mealcatweek::class,'id');
 
     }
 
-    public function hasmealcategoryplans(){
+    public function hasmealcatplans(){
 
         return $this->hasMany(mealcatplan::class,'id');
 

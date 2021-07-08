@@ -32,13 +32,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 <body class="">
   <div class="wrapper ">
-    
+
 
     @include('../header-footer/sidebar')
 
 
     <div class="main-panel">
-      
+
     @include('../header-footer/navbar')
 
 
@@ -58,13 +58,23 @@ The above copyright notice and this permission notice shall be included in all c
 
                       <thead>
                         <tr class="head">
-                          <th style="text-align: center">ID</th>
-                          <th style="text-align: center" width="100px">Meal Category Title</th>
+                          <th style="text-align: center" class="">ID</th>
+                          <th style="text-align: center" width="200px">Meal Category Title</th>
                           <th style="text-align: center" width="200px">Meal Title</th>
                           <th style="text-align: center">Image</th>
                           <th style="text-align: center" >Ingredients</th>
                           <th style="text-align: center" >Steps</th>
                           <th style="text-align: center" >Duration (Minutes)</th>
+                          <th style="text-align: center" >Meal Time</th>
+                          <th style="text-align: center" >Calories(kcal)</th>
+                          <th style="text-align: center" >Calories(%)</th>
+                          <th style="text-align: center" >Carbo(g)</th>
+                          <th style="text-align: center" >Carbo(%)</th>
+                          <th style="text-align: center" >Proteins(g)</th>
+                          <th style="text-align: center" >Proteins(%)</th>
+                          <th style="text-align: center" >Fat(g)</th>
+                          <th style="text-align: center" >Fat(%)</th>
+                          <th style="text-align: center" >Complexity</th>
                           <th style="text-align: center" >Status</th>
                           <th style="text-align: center" style="text-align: center">Action</th>
                         </tr>
@@ -72,54 +82,39 @@ The above copyright notice and this permission notice shall be included in all c
                       <tbody>
 
                         @foreach ($data as $dat2)
-                            
-                       
+
+
 
                         <tr>
                           <td>{{$dat2->id}}</td>
                           <td>{{$dat2->hasMealcategory->title}}</td>
                           <td>{{$dat2->title}}</td>
                           <td><img width="100px" height="50px" src="{{asset('storage/images/'.$dat2->image)}}" alt="" srcset=""></td>
-                          
+
                           <td class="text-center">
 
-                            
+
                             <a href="{{route('ingredients',$dat2->id)}}" type="button" class="btn btn-primary btn-sm">Click Here</a>
-                            
+
 
                           </td>
                           <td class="text-center">
 
-                            
-
-                             <ul>
-
-                             @php
-                             if ($dat2->steps!=NULL) {
-
-                              $steps=json_decode($dat2->steps);
-                              
-                             }
-                               
-                             @endphp
-
-                              
-                             @foreach ($steps as $step)
-                                 
-                             
-                              <li>{{$step}}</li>
-                              
-
-                              @endforeach 
-
-                              
-                            </ul> 
-                            
 
                             <a href="{{route('steps',$dat2->id)}}" type="button" class="btn btn-primary btn-sm">Click Here</a>
 
                           </td>
                           <td class="text-center">{{$dat2->duration}}</td>
+                          <td>{{$dat2->mealtime}}</td>
+                          <td>{{$dat2->calories}}</td>
+                          <td>{{$dat2->caloriesperc}}%</td>
+                          <td>{{$dat2->carbo}}</td>
+                          <td>{{$dat2->carboperc}}%</td>
+                          <td>{{$dat2->proteins}}</td>
+                          <td>{{$dat2->proteinsperc}}%</td>
+                          <td>{{$dat2->fats}}</td>
+                          <td>{{$dat2->fatsperc}}%</td>
+                          <td>{{$dat2->complexity}}</td>
                           <td class="text-center">
                             <form action="{{route('update_meal_status')}}" method="post">
                               @csrf
@@ -128,11 +123,11 @@ The above copyright notice and this permission notice shall be included in all c
                               <option value="{{$dat2->status}}">{{$dat2->status}}</option>
                               <option value="1">1</option>
                               <option value="0">0</option>
-                              
+
                             </select>
                           </form>
                           </td>
-                         
+
                           <td>
                             <a href='edit_meal/{{$dat2->id}}' type='button' rel='tooltip' title='' class='btn btn-info btn-link btn-sm' data-original-title='Edit User'>
                               <i class='material-icons'>edit</i></a>
@@ -150,17 +145,17 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
-      
+
       @include('../header-footer/footer')
 
     </div>
-   
+
   </div>
-  
+
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
@@ -249,7 +244,7 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="{{asset('js/bootstrap-notify.js')}}"></script>
   <script src="{{asset('js/material-dashboard.js?v=2.1.2')}}"></script>
   <script src="{{asset('js/demo.js')}}"></script>
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <script>

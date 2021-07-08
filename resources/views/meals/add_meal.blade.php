@@ -45,27 +45,27 @@ The above copyright notice and this permission notice shall be included in all c
 
 
   <div class="wrapper ">
-    
+
 
     @include('../header-footer/sidebar')
 
 
     <div class="main-panel">
       <!-- Navbar -->
-      
+
       @include('../header-footer/navbar')
 
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          
-          
+
+
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Add Meal</h4>
-                 
+
                 </div>
                 <div class="card-body">
                   <form action="{{route('add_meal_data')}}" method="POST" enctype="multipart/form-data">
@@ -76,13 +76,13 @@ The above copyright notice and this permission notice shall be included in all c
                               <label>Meal Category Title</label>
                               <!-- <input type="number" id="product_type" name="cat_id" required="[1-6]" class="form-control"> -->
                               <select multiple="multiple" style="    height: auto;"  name="cat_id[]" class="form-control">
-                           
+
                                 @foreach ($data as $data2)
-                              
+
                               <option value="{{$data2->id}}">{{$data2->title}}</option>
-                             
+
                               @endforeach
-      
+
       </select>
                             </div>
                           </div>
@@ -91,7 +91,7 @@ The above copyright notice and this permission notice shall be included in all c
                           <label>Meal Title</label>
                           <input type="text" id=""  name="title" class="form-control">
                         </div>
-                      </div>                   
+                      </div>
                       <div class="col-md-4">
                         <div class="">
                           <label for="">Image</label>
@@ -105,21 +105,21 @@ The above copyright notice and this permission notice shall be included in all c
                           <div id="another-participant1">
                             <input style="    margin-top: 15px;
                             width: 70%;" type="text" name="step[]" class="form-controlx" placeholder=""/>
-                            
+
                           </div>
                          <button class="btn-primary btn btn-md" style="    margin-top: 20px;
                          border: navajowhite;
                          border-radius: 6px;" type="button" id="add-participant1">+ Add more</button>
                         </div>
                       </div>
-                      
+
                       <div class="col-md-9">
                         <div class="">
                           <label for="">Add Meal Ingredients</label>
                           <div id="another-participant2">
                             <input style="    margin-top: 15px;
                             width: 70%;" type="text" name="ingredient[]" class="form-controlx" placeholder=""/>
-                            
+
                           </div>
                          <button class="btn-primary btn btn-md" style="    margin-top: 20px;
                          border: navajowhite;
@@ -135,11 +135,70 @@ The above copyright notice and this permission notice shall be included in all c
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">
+                          <label>Meal Time</label>
+                          <input type="text" id=""  name="mealtime" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
                           <label>Description</label>
                           <input type="text" id=""  name="descr" class="form-control">
                         </div>
                       </div>
-                      
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Calories (kcal)</label>
+                          <input type="number" id=""  name="calories" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Calories Percentage</label>
+                          <input type="number" id=""  name="caloriesperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Carbo (g)</label>
+                          <input type="number" id=""  name="carbo" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Carbo Percentage</label>
+                          <input type="number" id=""  name="carboperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Proteins (g)</label>
+                          <input type="number" id=""  name="proteins" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Proteins  Percentage</label>
+                          <input type="number" id=""  name="proteinsperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Fats (g)</label>
+                          <input type="number" id=""  name="fats" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Fats Percentage</label>
+                          <input type="number" id=""  name="fatsperc" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Complexity</label>
+                          <input type="text" id=""  name="complexity" class="form-control">
+                        </div>
+                      </div>
                       <div class="col-md-9">
                         <div class="form-group">
                             <button class="btn btn-primary" type='submit'>Add Meal</button>
@@ -150,7 +209,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -159,11 +218,11 @@ The above copyright notice and this permission notice shall be included in all c
       <script>
 
         $(document).ready(function(){
-        
+
             $("#add-participant1").click(function(){
 
         var $div = $('div[id^="another-participant1"]:last');
-   
+
         var num = parseInt( $div.prop("id").match(/\d+/g), 10 ) +1;
 
         var $klon = $div.clone().prop('id', 'another-participant1'+num );
@@ -174,9 +233,9 @@ The above copyright notice and this permission notice shall be included in all c
           name_number++;
           this.name = this.name.replace(/\[[0-9]\]+/, '['+name_number+']')
         });
-     
+
         $div.after( $klon );
-        
+
         });
         $("#add-participant2").click(function(){
 
@@ -196,9 +255,9 @@ $klon.find('input').each(function() {
 $div.after( $klon );
 
 });
-        
+
         });
-        
+
               </script>
   {{-- <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>

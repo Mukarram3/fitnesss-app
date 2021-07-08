@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder
             Userseeder::class,
             MealCategorySeeder::class,
             MealcatplanSeeder::class,
-            WeekmealcatSeeder::class,
-            DaySeeder::class,
-            MealSeeder::class,
+            MealcatweekSeeder::class,
+            MealdaySeeder::class,
+            MealtableSeeder::class,
        ]);
-        
+
     }
 }

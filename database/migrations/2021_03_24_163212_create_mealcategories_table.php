@@ -19,6 +19,7 @@ class CreateMealcategoriesTable extends Migration
             $table->string('title');
             $table->text('image');
             $table->text('description')->nullable();
+            $table->string('type')->default('paid');
             $table->boolean('status')->default('1');
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
