@@ -29,6 +29,6 @@ class AuthServiceProvider extends ServiceProvider
         ResetPassword::createUrlUsing(function ($user, string $token) {
             return 'https://example.com/reset-password?token='.$token;
         });
-        Passport::routes(); 
+        Passport::routes();
     }
 }

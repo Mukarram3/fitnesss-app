@@ -8,95 +8,95 @@
   <div class="logo"><a href="" class="simple-text logo-normal">
     <img style="width: 105px;height: 100px;border-radius: 100px;" src="{{asset('storage/images/'.auth()->user()->image)}}" alt="" srcset="">
    </a></div>
-   
+
  <div class="sidebar-wrapper">
    <ul class="nav">
-        
-     
+
+
      <li class="nav-item ">
        <a class="nav-link" href="{{route('user_page')}}">
          <i class="material-icons">person</i>
          <p>Users</p>
        </a>
-     </li>   
-     
-    
+     </li>
+
+{{--
      <li class="nav-item ">
-       <a class="nav-link" href="{{route('catgory_index')}}">
+       <a class="nav-link" href="">
          <i class="material-icons">content_paste</i>
          <p>Catogories</p>
        </a>
      </li>
-   
+
      <li class="nav-item ">
-      <a class="nav-link" href="{{route('mealcategoryindex')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">location_ons</i>
         <p>Meal Category</p>
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="{{route('mealcategoryplanindex')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">notifications</i>
         <p>Meal Category Plans</p>
       </a>
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link" href="{{route('mealcategoryweeks')}}">
+    </li> --}}
+    {{-- <li class="nav-item ">
+      <a class="nav-link" href="">
         <i class="material-icons">notifications</i>
         <p>Meal Category Weeks</p>
       </a>
     </li>
 
     <li class="nav-item ">
-      <a class="nav-link" href="{{route('mealcategorydays')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">notifications</i>
         <p>Meal Category Days</p>
       </a>
     </li>
-    
+
     <li class="nav-item ">
-      <a class="nav-link" href="{{route('mealindex')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">notifications</i>
         <p>Meals</p>
       </a>
     </li>
 
       <li class="nav-item ">
-       <a class="nav-link" href="{{route('workoutcategory_index')}}">
+       <a class="nav-link" href="">
          <i class="material-icons">library_books</i>
          <p>Workout Category</p>
        </a>
      </li>
 
      <li class="nav-item ">
-       <a class="nav-link" href="{{route('exercises')}}">
+       <a class="nav-link" href="">
          <i class="material-icons">bubble_chart</i>
          <p>Exercises</p>
        </a>
-     </li> 
-    
+     </li>
+
 
      <li class="nav-item ">
-      <a class="nav-link" href="{{route('subscribed')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">person</i>
         <p>Subscribed</p>
       </a>
     </li>
-    
+
     <li class="nav-item ">
-      <a class="nav-link" href="{{route('subscribe_history')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">person</i>
         <p>Subscription History</p>
       </a>
     </li>
-    
+
     <li class="nav-item ">
-      <a class="nav-link" href="{{route('plans')}}">
+      <a class="nav-link" href="">
         <i class="material-icons">notifications</i>
         <p>Subscription Plans</p>
       </a>
-    </li>
-     
+    </li> --}}
+
      {{--
      <li class="nav-item ">
        <a class="nav-link" href="{{route('steps')}}">
@@ -111,15 +111,15 @@
          <p>Subscribed Packages</p>
        </a>
      </li>
-     
+
      <li class="nav-item ">
        <a class="nav-link" href="{{route('subscr_history')}}">
          <i class="material-icons">notifications</i>
          <p>Subscription History</p>
        </a>
      </li> --}}
-     
-      
+
+
      {{-- <li class="nav-item active-pro ">
        <a class="nav-link" href="./upgrade.html">
          <i class="material-icons">unarchive</i>

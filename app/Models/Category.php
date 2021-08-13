@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class category extends Model
 {
     use HasFactory;
     protected $table='categories';
-    protected $fillable = ['id','title','image','description','status'];
+    protected $fillable= ['id','color','name','icon'];
 
-    public function hassubscribed(){
-
-        return $this->hasMany(subscribed::class,'id');
-
+    public function hasdoctors(){
+        return $this->hasMany(doctor::class,'id');
     }
-
 }

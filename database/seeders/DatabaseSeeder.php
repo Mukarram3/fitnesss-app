@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\category;
+use App\Models\doctor;
+use App\Models\doctorrating;
 use App\Models\weekmealcat;
 use Illuminate\Database\Seeder;
 
@@ -21,13 +24,13 @@ class DatabaseSeeder extends Seeder
         //  \App\Models\Workout::factory(5)->create();
         //  \App\Models\Exercise::factory(10)->create();
         $this->call([
-            CategorySeeder::class,
+
             Userseeder::class,
-            MealCategorySeeder::class,
-            MealcatplanSeeder::class,
-            MealcatweekSeeder::class,
-            MealdaySeeder::class,
-            MealtableSeeder::class,
+            CategorySeeder::class,
+            DoctorSeeder::class,
+            PatientSeeder::class,
+            DoctorratingSeeder::class,
+
        ]);
 
     }

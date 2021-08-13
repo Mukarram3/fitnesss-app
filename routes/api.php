@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\apiController;
-use App\Http\Controllers\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,56 +18,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//                        User Sign Up/Login
+Route::post('user/signup',[apiController::class,'signup'])->name('signup');
+Route::post('user/login',[apiController::class,'login'])->name('login');
+
+
 Route::group(['middleware' => 'auth:api'], function(){
 
-
+    Route::post('details',[apiController::class,'details']);
 
     });
 
+    Route::get('categories',[apiController::class,'categories']);
+    Route::get('doctors',[apiController::class,'doctors']);
 
-//                        User Sign Up/Login
-
-
-Route::post('user/signup',[apiController::class,'signup'])->name('signup');
-Route::post('user/login',[apiController::class,'login'])->name('login');
-Route::post('forget_password/email',[ForgotPasswordController::class,'forgot']);
-Route::post('forget_password/reset',[ForgotPasswordController::class,'reset']);
-
-//                         Workout
+    Route::post('comments',[apiController::class,'comments']);
 
 
-Route::get('workout_category/index',[apiController::class,'workoutcategory_index'])->name('workoutcategory_index');
-
-Route::get('workout_category/exercises',[apiController::class,'exercises'])->name('exercises');
-
-
-
-//                         Meal Category Routes
-
-Route::get('meal_category/index',[apiController::class,'mealcategoryindex'])->name('mealcategoryindex');
-Route::get('meal_categorypaid/index',[apiController::class,'mealcategorypaidindex'])->name('mealcategorypaidindex');
-Route::get('mealcategoryplan/index',[apiController::class,'mealcategoryplanindex'])->name('mealcategoryplanindex');
-Route::get('weekdaysmealcat/index',[apiController::class,'weekdaysmealcat'])->name('weekdaysmealcat');
-
-
-//                          Meal Plans
-
-
-Route::get('meal_category/plans',[apiController::class,'plans'])->name('mealcatplans');
-
-//                        Meal Category Weeks
-
-Route::get('meal_category/weeks',[apiController::class,'weeks'])->name('mealcatweeks');
-
-//                     Meal Category Days
-
-
-Route::get('meal_category/days',[apiController::class,'days'])->name('mealcatdays');
-
-
-//                           Meal
-
-
-
-Route::get('meal/index',[apiController::class,'mealindex'])->name('mealindex');
-
+?>

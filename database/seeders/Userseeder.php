@@ -19,15 +19,11 @@ class Userseeder extends Seeder
             'email'=>'mukarram123786@gmail.com',
             'password'=> Hash::make('m12345'),
             'address'=>'Street No 8',
-            'city'=>'sargodha',
-            'Mobile'=>'03066703820',
-            'Image'=>'60c080a5150d1.jpeg',
-            'country'=>'Pakistan',
-            'state'=>'Punjab',
+            'phone'=>'0306-6703820',
+            'gender'=>'male',
             'dob'=>'1999-12-14',
-            'height'=>'5',
-            'weight'=>'55',
-            'gender'=>'male'
+            'type'=>'admin',
+            'status'=> 1,
         ]);
     }
 }

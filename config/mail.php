@@ -106,5 +106,36 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+      [
+
+
+        'driver' => env('MAIL_DRIVER', 'smtp'),
+
+
+        'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+
+
+        'port' => env('MAIL_PORT', 587),
+
+
+        'from' => ['address' => 'mukarram123786@gmail.com', 'name' => 'Your Title'],
+
+
+        'encryption' => 'tls',
+
+
+        'username' => env('Mukarram'),
+
+
+
+        'password' => env('Mmukarram_786'),
+
+
+        'sendmail' => '/usr/sbin/sendmail -bs',
+
+
+        'pretend' => false,
+
+      ],
 
 ];

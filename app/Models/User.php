@@ -21,9 +21,9 @@ class User extends Authenticatable
         'email',
         'password',
         'address',
-        'city',
-        'Mobile',
-        'image',
+        'phone',
+        'gender',
+        'dob',
         'type',
         'status',
 
@@ -48,10 +48,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hassubscribed(){
-
-        return $this->hasMany(subscribed::class,'id');
-
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'userroles');
+        // "role_user" is table name
+        // OR if we have model RoleUser, then we can use class
+        // instead of table name role_user
+        //return $this->belongsToMany(Role::class, RoleUser::class);
     }
 
 }
